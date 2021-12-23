@@ -21,3 +21,31 @@ class CRideModel(models.Model):
         abstract = True
         get_lasted_by = 'created'
         orderinng = ['-created', '-modified']
+
+#Herencia
+'''
+-Abstracta : Exponen un molde
+
+Se puede heredar los meta datos de un modeloo:
+class Student(CRideModel):
+    name = model.CharField()
+
+    class Meta(CRideModel.META):
+        db_table = 'student_role'
+Ademas al hacer la herencia Django quita el abstract true y lo deja en false
+
+
+-Proxy: Extiendende de una tabla ya existente, y sirve para agregar funcionalidad
+
+Class Person(Model.Model):
+   fist_name = models.Charfield()
+   last_name = models.Charfield()
+
+class MyPerson(Person):
+
+    class Meta:
+        proxy = True
+    
+    def say_hi(name):
+        pass
+'''
