@@ -3,6 +3,7 @@
 # Django
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 
 #Utilities
 from cride.utils.models import CRideModel
@@ -22,7 +23,11 @@ class User(CRideModel, AbstractUser):
     error_messages= 'An user with that email already exist.'
   )
 
-  phone_number = models.CharField(max_length=17, blank=True)
+  phone_regex = RegexValidator(
+    regex=r'\+?1?\d{9,15}',
+    message= "Phone number must be entered in the formad: +999999999. Up to 15 digits allowed."
+  )
+  phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
 
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
