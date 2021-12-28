@@ -1,3 +1,5 @@
+from django.db import models
+
 class CRideModel(models.Model):
     """Comparte Ride base model.
     CRideModel acts as an abstract base class from which every
@@ -8,12 +10,12 @@ class CRideModel(models.Model):
     """
     created = models.DateTimeField(
         'created at',
-        auto_now_add = True
+        auto_now_add = True,
         help_text='Date time on which the object was ccreated.'
         )
     modified = models.DateTimeField(
         'modified at',
-        auton_now = True
+        auton_now = True,
         help_text='Date time on which the object was modified.'
         )
     class Meta:
