@@ -15,14 +15,14 @@ class CRideModel(models.Model):
         )
     modified = models.DateTimeField(
         'modified at',
-        auton_now = True,
+        auto_now = True,
         help_text='Date time on which the object was modified.'
         )
     class Meta:
         """Meta option."""
         abstract = True
-        get_lasted_by = 'created'
-        orderinng = ['-created', '-modified']
+        get_latest_by = 'created'
+        ordering = ['-created', '-modified']
 
 #Herencia
 '''

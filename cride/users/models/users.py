@@ -20,7 +20,9 @@ class User(CRideModel, AbstractUser):
   email = models.EmailField(
     'email address',
     unique=True,
-    error_messages= 'An user with that email already exist.'
+    error_messages={
+      'unique': 'An user with that email already exist.'
+    }
   )
 
   phone_regex = RegexValidator(
@@ -46,3 +48,11 @@ class User(CRideModel, AbstractUser):
     default=True,
     help_text='Set to true when the user have verified its email address.'
   )
+
+  def __str__(self):
+    """"Return username"""
+    return self.username
+
+  def get_short_name(self):
+    """"Return username"""
+    return self.username
