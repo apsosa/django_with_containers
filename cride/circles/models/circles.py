@@ -2,15 +2,17 @@
 
 # Django
 from django.db import models
+from cride.users.models.users import User
 
-# Utilitis
+# Utilities
 from cride.utils.models import CRideModel
 
 
 class Circle(CRideModel):
     """Circle model.
-    A circle is a privete grup where rides are offered and taken by its members.
-    To join a circle a user must receive an unique invitation code from an existing circle member.
+    A circle is a private group where rides are offered and taken
+    by its members. To join a circle a user must receive an unique
+    invitation code from an existing circle member.
     """
 
     name = models.CharField('circle name', max_length=140)
@@ -18,12 +20,13 @@ class Circle(CRideModel):
 
     about = models.CharField('circle description', max_length=255)
     picture = models.ImageField(upload_to='circles/pictures', blank=True, null=True)
-
+    """
     members = models.ManyToManyField(
-        'users.User',
+        User,
         through='circles.Membership',
         through_fields=('circle', 'user')
     )
+    """
 
     # Stats
     rides_offered = models.PositiveIntegerField(default=0)
@@ -32,7 +35,7 @@ class Circle(CRideModel):
     verified = models.BooleanField(
         'verified circle',
         default=False,
-        help_text='Verified circles are also know as official communities.'
+        help_text='Verified circles are also known as official communities.'
     )
 
     is_public = models.BooleanField(
@@ -45,7 +48,6 @@ class Circle(CRideModel):
         default=False,
         help_text='Limited circles can grow up to a fixed number of members.'
     )
-
     members_limit = models.PositiveIntegerField(
         default=0,
         help_text='If circle is limited, this will be the limit on the number of members.'

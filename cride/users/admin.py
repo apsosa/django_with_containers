@@ -1,4 +1,5 @@
-"""Users models admin."""
+
+"""User models admin."""
 
 # Django
 from django.contrib import admin
