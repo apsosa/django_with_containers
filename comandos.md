@@ -25,3 +25,10 @@ consola 2:
   docker-compose ps
   docker rm -f <name>
   docker-compose run --rm --service-ports django
+Parea correr comando de python manage.py
+
+  docker-compose run --rm django python manage.py migrate
+
+Para correr la shell plus
+
+docker-compose run --rm django python manage.py shell_plus
